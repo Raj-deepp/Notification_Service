@@ -6,7 +6,11 @@ const app = express();
 const { publishToQueue } = require('./queue/producer');
 const { getUserNotifications } = require('./Services/inAppService');
 
+const userRoutes = require('./routes/userRoutes');
+
 app.use(express.json());
+
+app.use('/', userRoutes);
 
 app.post('/notifications', async (req, res) => {
   try {
